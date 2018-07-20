@@ -1,21 +1,10 @@
-<form [formGroup]="taskFormGroup" (ngSubmit)="createTask()">
-  <div>
-    <label for="">Name</label>
-    <input type="text" [(ngModel)]="task.name" formControlName="name">
-    <label for="">Description</label>
-    <input type="text" [(ngModel)]="task.description" formControlName="description">
-    <label for="">Start Date</label>
-    <input type="text" [(ngModel)]="task.startDate" formControlName="startDate">
-    <label for="">End Date</label>
-    <input type="text" [(ngModel)]="task.endDate" formControlName="endDate">
-    <button type="submit">Submit</button>
-  </div>
-</form>
-
-<div>
-  <ul>
-    <li *ngFor="let task of taskList">
-      <span>{{task.name}}</span>   
-    </li>
-  </ul>
-</div>
+<mat-card class="card">
+  <h3>My Task List</h3>
+  <mat-card-content>
+    <ul>
+      <li *ngFor="let task of taskList">
+        <span>{{task.name}}</span>   
+      </li>
+    </ul>
+  </mat-card-content>
+</mat-card>
