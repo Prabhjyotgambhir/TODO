@@ -30,15 +30,21 @@ export class TaskComponent implements OnInit {
     );
   }
 
-  deleteTask(taskId: any) {
-      this.taskService.deleteTask(taskId).subscribe(
+  deleteTask(taskId: any, status: string) {
+    this.taskService.deleteTask(taskId).subscribe(
       (response) => {
-        const task = this.taskList.find((item) => item._id === taskId);
-        const index = this.taskList.indexOf(task);
-        this.taskList.splice(index , 1);
+        if (status === 'done') {
+          const task = this.doneList.find((item) => item._id === taskId);
+          const index = this.doneList.indexOf(task);
+          this.doneList.splice(index, 1);
+        } else {
+          const task = this.pendingList.find((item) => item._id === taskId);
+          const index = this.pendingList.indexOf(task);
+          this.pendingList.splice(index, 1);
+        }
         this.taskService.openSnackbar('Task Deleted Succesfully');
-    },
-      (error) => this.taskService.openSnackbar('Error deleting Task') );
+      },
+      (error) => this.taskService.openSnackbar('Error deleting Task'));
   }
 
   updateTask(task: Task) {
@@ -46,14 +52,39 @@ export class TaskComponent implements OnInit {
     this.taskService.updateTask(task).subscribe(
       (response) => {
         if (response.status === 'done') {
-          const doneTask = this.taskList.find((item) => item._id === response._id);
-          const index = this.taskList.indexOf(doneTask);
-          this.taskList.splice(index , 1);
+          const doneTask = this.pendingList.find((item) => item._id === response._id);
+          const index = this.pendingList.indexOf(doneTask);
+          this.pendingList.splice(index, 1);
           this.doneList.push(doneTask);
         }
         this.taskService.openSnackbar('Task Updated Succesfully');
       }
     );
   }
+
+  undoTask(task: Task) {
+    task.status = 'pending';
+    this.taskService.updateTask(task).subscribe(
+      (response) => {
+        if (response.status === 'pending') {
+          const pendingTask = this.doneList.find((item) => item._id === response._id);
+          const index = this.doneList.indexOf(pendingTask);
+          this.doneList.splice(index, 1);
+          this.pendingList.push(pendingTask);
+        }
+        this.taskService.openSnackbar('Task Updated Succesfully');
+      }
+    );
+  }
+
+  getTaskList(event) {
+    if (event.index === 0) {
+      this.taskService.getTasks().subscribe(
+        (taskList) => {
+          this.taskList = taskList;
+        }
+      );
+    }
+    }
 
 }

@@ -12,3 +12,13 @@ h2{
 .task-done {
     background-color: green;
 }
+
+.new-position{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+:host /deep/ .mat-tab-label {
+    width: 33% !important;
+}

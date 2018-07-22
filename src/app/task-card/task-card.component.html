@@ -5,8 +5,9 @@
       <div>Start Date: {{task.startDate | date: 'short'}}</div>
       <div>End Date: {{task.endDate | date: 'short'}}</div>
     </mat-card-content>
-    <mat-card-actions class="text-center">
-        <button mat-raised-button  color="primary" type="submit" (click)="invokeUpdate()"><mat-icon>done</mat-icon>DONE</button>
+    <mat-card-actions class="text-center" *ngIf = showActions>
+        <button mat-raised-button  *ngIf = "task.status === 'pending'" color="primary" type="submit" (click)="invokeUpdate()"><mat-icon>done</mat-icon>DONE</button>
+        <button mat-raised-button *ngIf = "task.status === 'done'" color="primary" type="submit" (click)="invokeUndo()"><mat-icon>undo</mat-icon>UNDO</button>
         <button mat-raised-button color="warn" type="submit" (click)="invokeDelete()"><mat-icon>delete</mat-icon>DELETE</button>
     </mat-card-actions>
   </mat-card>

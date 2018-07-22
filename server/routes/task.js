@@ -63,7 +63,8 @@ router.delete('/', (req,res) => {
 
 router.put('/:id',(req, res) => {
     const id = req.params.id;
-    Task.findByIdAndUpdate(id, req.body).exec().then((response) => {
+     // new true is set to send the updated doc to the FE in mongoose V4    
+    Task.findByIdAndUpdate(id, req.body, {new: true}).exec().then((response) => {
         res.status(200).json(response)
      });
 
