@@ -9,6 +9,7 @@ router.post('/', (req,res) => {
         description: req.body.description,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
+        status: 'pending',
         _id: new mongoose.Types.ObjectId()
     });
 
@@ -28,8 +29,8 @@ router.get('/', (req, res) => {
 
 
 router.delete('/:id', (req,res) => {
-    const id = req.params._id;
-    Task.remove({id: id})
+    const id = req.params.id;
+    Task.remove({_id: id})
         .exec()
         .then((response) => {
             res.status(200).json({
@@ -49,4 +50,22 @@ router.get('/:id', (req,res) => {
         .catch((error) => console.log(error));
 });
 
+router.delete('/', (req,res) => {
+    Task.remove()
+        .exec()
+        .then((response) => {
+            res.status(200).json({
+                message: 'All Tasks Deleted Successfully'
+            })
+        })
+        .catch((error) => console.log(error));
+});
+
+router.put('/:id',(req, res) => {
+    const id = req.params.id;
+    Task.findByIdAndUpdate(id, req.body).exec().then((response) => {
+        res.status(200).json(response)
+     });
+
+});
 module.exports = router;
