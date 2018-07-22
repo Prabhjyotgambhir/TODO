@@ -3,5 +3,8 @@ export class Task {
     description: string;
     startDate: Date;
     endDate: Date;
-    id: any;
+    _id: any;
+    status: string;
+    createdAt: Date;
+    updatedAt: Date;
 }

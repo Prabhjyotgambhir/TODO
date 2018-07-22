@@ -29,6 +29,13 @@ export class TaskService {
         });
     }
 
+    updateTask(task: Task): Observable <Task> {
+      return this.http.put('http://localhost:1100/tasks/' + task._id , task)
+      .map((res) => {
+        return res.json();
+      });
+    }
+
     deleteTask(taskID: any): Observable <Task> {
       return this.http.delete('http://localhost:1100/tasks/' + taskID)
       .map((res) => {
@@ -41,5 +48,6 @@ export class TaskService {
         duration: 2000,
       });
     }
+
   }
 

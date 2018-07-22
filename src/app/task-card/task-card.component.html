@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-content class="text-center">
+      <div>Name: {{task.name}}</div>
+      <div>Description: {{task.description}}</div>
+      <div>Start Date: {{task.startDate | date: 'short'}}</div>
+      <div>End Date: {{task.endDate | date: 'short'}}</div>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button mat-raised-button  color="primary" type="submit" (click)="invokeUpdate()"><mat-icon>done</mat-icon>DONE</button>
+        <button mat-raised-button color="warn" type="submit" (click)="invokeDelete()"><mat-icon>delete</mat-icon>DELETE</button>
+    </mat-card-actions>
+  </mat-card>

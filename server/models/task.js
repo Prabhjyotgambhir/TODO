@@ -16,7 +16,11 @@ const schema = mongoose.Schema({
         required: true,
         type: String
     },
-    id: mongoose.Schema.Types.ObjectId
-});
+    status: {
+        type: String
+    },
+    _id: mongoose.Schema.Types.ObjectId
+}, {timestamps: true} // Used to set the time at real time basis 
+);
 
 module.exports =  mongoose.model('Task', schema); // Task here is basically a connection in mongoDB
