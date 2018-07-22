@@ -9,7 +9,7 @@ router.post('/', (req,res) => {
         description: req.body.description,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
-        _id: new mongoose.Types.ObjectId()
+        id: new mongoose.Types.ObjectId()
     });
 
     task.save().then((response) => {
@@ -28,7 +28,8 @@ router.get('/', (req, res) => {
 
 
 router.delete('/:id', (req,res) => {
-    const id = req.params._id;
+    const id = req.params.id;
+    console.log(id);
     Task.remove({id: id})
         .exec()
         .then((response) => {

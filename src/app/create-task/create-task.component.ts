@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
 import { TaskService } from '../services/task.service';
 import { Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-create-task',
@@ -13,7 +14,7 @@ export class CreateTaskComponent implements OnInit {
   taskFormGroup: FormGroup;
   task: Task;
 
-  constructor(private taskService: TaskService, private router: Router) { }
+  constructor(private taskService: TaskService, private router: Router, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.task = new Task();
@@ -28,10 +29,11 @@ export class CreateTaskComponent implements OnInit {
   createTask() {
     this.taskService.createTask(this.task).subscribe(
       (response) => {
-        alert('New Task Added');
         this.router.navigateByUrl('tasks');
+        this.taskService.openSnackbar('Task added succesfully');
       }
     );
   }
+
 
 }

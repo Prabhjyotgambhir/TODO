@@ -1,10 +1,17 @@
-<mat-card class="card">
-  <h3>My Task List</h3>
-  <mat-card-content>
-    <ul>
-      <li *ngFor="let task of taskList">
-        <span>{{task.name}}</span>   
-      </li>
-    </ul>
-  </mat-card-content>
-</mat-card>
+<h2 class="text-center">My Task List</h2>
+<mat-grid-list cols="4" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let task of taskList">
+    <mat-card>
+      <mat-card-content class="text-center">
+        <div>Name: {{task.name}}</div>
+        <div>Description: {{task.description}}</div>
+        <div>Start Date: {{task.startDate | date: 'short'}}</div>
+        <div>End Date: {{task.endDate | date: 'short'}}</div>
+      </mat-card-content>
+      <mat-card-actions class="text-center">
+          <button mat-raised-button  color="primary" type="submit"><mat-icon>done</mat-icon>DONE</button>
+          <button mat-raised-button color="warn" type="submit" (click)="deleteTask(task.id)"><mat-icon>delete</mat-icon>DELETE</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

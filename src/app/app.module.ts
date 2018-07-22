@@ -8,7 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TaskComponent } from './task/task.component';
 import { HttpModule } from '@angular/http';
-import { MatButtonModule, MatCardModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule, MatDatepickerModule, MatGridListModule, 
+  MatNativeDateModule, MatSnackBarModule, MatIconModule } from '@angular/material';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CreateTaskComponent } from './create-task/create-task.component'; // to use material bttons
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,7 +33,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    MatIconModule
   ],
   providers: [TaskService, MatDatepickerModule],
   bootstrap: [AppComponent]

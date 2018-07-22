@@ -16,7 +16,7 @@ const schema = mongoose.Schema({
         required: true,
         type: String
     },
-    _id: mongoose.Schema.Types.ObjectId
+    id: mongoose.Schema.Types.ObjectId
 });
 
-module.exports =  mongoose.model('Task', schema);
+module.exports =  mongoose.model('Task', schema); // Task here is basically a connection in mongoDB
