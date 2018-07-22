@@ -8,8 +8,10 @@ import { Task } from '../models/task';
 })
 export class TaskCardComponent implements OnInit {
   @Input() task: Task;
+  @Input() showActions: boolean;
   @Output() deleteTask = new EventEmitter();
   @Output() updateTask = new EventEmitter();
+  @Output() undoTask = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -21,6 +23,10 @@ export class TaskCardComponent implements OnInit {
 
   invokeUpdate() {
     this.updateTask.emit();
+  }
+
+  invokeUndo() {
+    this.undoTask.emit();
   }
 
 }
