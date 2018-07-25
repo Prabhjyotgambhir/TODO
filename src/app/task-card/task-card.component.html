@@ -1,4 +1,5 @@
 <mat-card>
+    <button mat-button class="edit-position" *ngIf = "task.status === 'pending'" type="submit" (click)="invokeEdit()"><mat-icon>edit</mat-icon></button>
     <mat-card-content class="text-center">
       <div>Name: {{task.name}}</div>
       <div>Description: {{task.description}}</div>
