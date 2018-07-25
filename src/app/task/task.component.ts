@@ -80,6 +80,7 @@ export class TaskComponent implements OnInit {
   }
 
   getTaskList(event) {
+    // reason for the condition ??
     if (event.index === 0) {
       this.taskService.getTasks().subscribe(
         (taskList) => {

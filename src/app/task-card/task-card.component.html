@@ -5,6 +5,7 @@
       <div>Description: {{task.description}}</div>
       <div>Start Date: {{task.startDate | date: 'short'}}</div>
       <div>End Date: {{task.endDate | date: 'short'}}</div>
+      <div>Status: {{task.status}}</div>
     </mat-card-content>
     <mat-card-actions class="text-center" *ngIf = showActions>
         <button mat-raised-button  *ngIf = "task.status === 'pending'" color="primary" type="submit" (click)="invokeUpdate()"><mat-icon>done</mat-icon>DONE</button>

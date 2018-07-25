@@ -1,6 +1,6 @@
 <h2 class="text-center">My Task List</h2>
 <button mat-fab color="accent" class="new-position" [routerLink]="['/new']">+</button>
-<mat-tab-group  (selectedTabChange)="getTaskList($event)">
+<mat-tab-group >
   <mat-tab label="ALL">
     <mat-grid-list cols="4" rowHeight="2:1">
       <mat-grid-tile *ngFor="let task of taskList">
