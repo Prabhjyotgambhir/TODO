@@ -9,11 +9,12 @@ import { AppComponent } from './app.component';
 import { TaskComponent } from './task/task.component';
 import { HttpModule } from '@angular/http';
 import { MatButtonModule, MatCardModule, MatInputModule, MatDatepickerModule, MatGridListModule,
-  MatNativeDateModule, MatSnackBarModule, MatIconModule, MatTabsModule } from '@angular/material';
+  MatNativeDateModule, MatSnackBarModule, MatIconModule, MatTabsModule, MatDialogModule } from '@angular/material';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CreateTaskComponent } from './create-task/create-task.component'; // to use material bttons
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskCardComponent } from './task-card/task-card.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TaskCardComponent } from './task-card/task-card.component';
     TaskComponent,
     WelcomeComponent,
     CreateTaskComponent,
-    TaskCardComponent
+    TaskCardComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,11 @@ import { TaskCardComponent } from './task-card/task-card.component';
     MatSnackBarModule,
     MatGridListModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    EditTaskComponent
   ],
   providers: [TaskService, MatDatepickerModule],
   bootstrap: [AppComponent]
