@@ -19,6 +19,12 @@ h2{
     right: 10%;
 }
 
+.back-position{
+    position: absolute;
+    top: 1%;
+    left: 1%;
+}
+
 :host /deep/ .mat-tab-label {
     width: 33% !important;
 }

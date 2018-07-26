@@ -79,6 +79,7 @@ export class TaskComponent implements OnInit {
     );
   }
 
+  // What is the use of this method, I even removed the html binding but nothing broke
   getTaskList(event) {
     // reason for the condition ??
     if (event.index === 0) {
