@@ -20,6 +20,8 @@ import { SignupComponent } from './signup/signup.component';
 import { CookieService } from 'ngx-cookie-service';
 import { TaskService } from './services/task.service';
 import { UserService } from './services/user.service';
+import { HomepageComponent } from './homepage/homepage.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { UserService } from './services/user.service';
     CreateTaskComponent,
     TaskCardComponent,
     EditTaskComponent,
-    SignupComponent
+    SignupComponent,
+    HomepageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
