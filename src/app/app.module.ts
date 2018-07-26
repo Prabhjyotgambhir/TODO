@@ -1,6 +1,5 @@
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
-import { TaskService } from './services/task.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +14,12 @@ import { CreateTaskComponent } from './create-task/create-task.component'; // to
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
+import { SignupComponent } from './signup/signup.component';
+
+// Services
+import { CookieService } from 'ngx-cookie-service';
+import { TaskService } from './services/task.service';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -24,7 +29,8 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
     WelcomeComponent,
     CreateTaskComponent,
     TaskCardComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,7 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
   entryComponents: [
     EditTaskComponent
   ],
-  providers: [TaskService, MatDatepickerModule],
+  providers: [TaskService, MatDatepickerModule, UserService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

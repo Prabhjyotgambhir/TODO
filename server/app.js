@@ -4,10 +4,11 @@ const app = express();
 const port = 1100 || PROCESS.ENV.PORT;
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const taskRoute = require('./routes/task');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const morgan = require('morgan');
+const taskRoute = require('./routes/task');
+const userRoute = require('./routes/user');
 
 app.use(morgan('dev'));
 
@@ -31,6 +32,7 @@ mongoose.connection.on('error', (error) => {
 
 
 app.use('/tasks', taskRoute);
+app.use('/user', userRoute);
 
 app.listen(port, () => {
     console.log('Server running at port: ', port);

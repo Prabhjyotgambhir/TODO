@@ -1,8 +1,10 @@
+import { Router } from '@angular/router';
 import { TaskService } from './../services/task.service';
 import { Task } from './../models/task';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-task',
@@ -14,9 +16,14 @@ export class TaskComponent implements OnInit {
   doneList: Task[] = [];
   pendingList: Task[] = [];
   taskDone: Task;
-  constructor(private taskService: TaskService, private dialog: MatDialog) { }
+  constructor(private taskService: TaskService, private dialog: MatDialog, private cookieService: CookieService, private router: Router) { }
 
   ngOnInit() {
+
+    if (!this.cookieService.get('token')) {
+      this.router.navigateByUrl('signup');
+    }
+
     this.taskList = [];
     this.taskService.getTasks().subscribe(
       (taskList) => {
