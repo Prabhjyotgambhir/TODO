@@ -32,4 +32,8 @@ export class EditTaskComponent implements OnInit {
     );
   }
 
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
 }
