@@ -12,6 +12,7 @@ export class TaskCardComponent implements OnInit {
   @Output() deleteTask = new EventEmitter();
   @Output() updateTask = new EventEmitter();
   @Output() undoTask = new EventEmitter();
+  @Output() editTask = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -29,4 +30,7 @@ export class TaskCardComponent implements OnInit {
     this.undoTask.emit();
   }
 
+  invokeEdit() {
+    this.editTask.emit();
+  }
 }

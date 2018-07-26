@@ -10,11 +10,6 @@ export class TaskService {
 
   constructor(private http: Http, private snackbar: MatSnackBar) { }
 
-  // createTask(): Observable<Task> {
-  //   return this.http.get('http://localhost:1100').map((res) => {
-  //     return res.json()
-  //   }).catch((error) => return error.json());
-
     createTask(task: Task): Observable < Task > {
       return this.http.post('http://localhost:1100/tasks', task)
         .map((res) => {
@@ -36,8 +31,8 @@ export class TaskService {
       });
     }
 
-    deleteTask(taskID: any): Observable <Task> {
-      return this.http.delete('http://localhost:1100/tasks/' + taskID)
+    deleteTask(taskId: any): Observable <Task> {
+      return this.http.delete('http://localhost:1100/tasks/' + taskId)
       .map((res) => {
         return res.json();
       });

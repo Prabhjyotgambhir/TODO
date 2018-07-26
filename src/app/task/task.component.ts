@@ -1,6 +1,8 @@
 import { TaskService } from './../services/task.service';
 import { Task } from './../models/task';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef, MatDialog } from '@angular/material';
+import { EditTaskComponent } from '../edit-task/edit-task.component';
 
 @Component({
   selector: 'app-task',
@@ -12,7 +14,7 @@ export class TaskComponent implements OnInit {
   doneList: Task[] = [];
   pendingList: Task[] = [];
   taskDone: Task;
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.taskList = [];
@@ -78,6 +80,7 @@ export class TaskComponent implements OnInit {
   }
 
   getTaskList(event) {
+    // reason for the condition ??
     if (event.index === 0) {
       this.taskService.getTasks().subscribe(
         (taskList) => {
@@ -85,6 +88,13 @@ export class TaskComponent implements OnInit {
         }
       );
     }
+    }
+
+    editTask(task: Task) {
+      const dialogRef = this.dialog.open(EditTaskComponent, {
+        width: '250px',
+        data: task
+      });
     }
 
 }

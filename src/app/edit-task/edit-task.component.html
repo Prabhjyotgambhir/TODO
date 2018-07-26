@@ -1,0 +1,32 @@
+<mat-card class="card">
+  <h3>Edit Task - {{task.name}}</h3>
+  <mat-card-content>
+    <form [formGroup]="taskFormGroup" (ngSubmit)="editTask()">
+      <div>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Name of task" [(ngModel)]="task.name" formControlName="name">
+        </mat-form-field>
+        <div>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Task description" [(ngModel)]="task.description" formControlName="description">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker1" placeholder="Choose a start date" [(ngModel)]="task.startDate" formControlName="startDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+              <input matInput [matDatepicker]="picker2" placeholder="Choose a end date" [(ngModel)]="task.endDate" formControlName="endDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!taskFormGroup.valid">Update</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,6 +1,6 @@
 <h2 class="text-center">My Task List</h2>
 <button mat-fab color="accent" class="new-position" [routerLink]="['/new']">+</button>
-<mat-tab-group  (selectedTabChange)="getTaskList($event)">
+<mat-tab-group >
   <mat-tab label="ALL">
     <mat-grid-list cols="4" rowHeight="2:1">
       <mat-grid-tile *ngFor="let task of taskList">
@@ -11,11 +11,11 @@
   <mat-tab label="Pending">
     <mat-grid-list cols="4" rowHeight="2:1">
       <mat-grid-tile *ngFor="let task of pendingList">
-        <app-task-card [task]="task" (updateTask)="updateTask(task)" (deleteTask)="deleteTask(task._id, 'pending')" [showActions] = 'true'></app-task-card>
+        <app-task-card [task]="task" (updateTask)="updateTask(task)" (editTask)="editTask(task)" (deleteTask)="deleteTask(task._id, 'pending')" [showActions] = 'true'></app-task-card>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-tab>
-  <mat-tab label="DONE">
+  <mat-tab label="Done">
     <mat-grid-list cols="4" rowHeight="2:1">
       <mat-grid-tile *ngFor="let task of doneList">
         <app-task-card [task]="task" (updateTask)="updateTask(task)" (undoTask)="undoTask(task)" (deleteTask)="deleteTask(task._id, 'done')" [showActions] = 'true'></app-task-card>
