@@ -12,9 +12,9 @@ export class WelcomeComponent implements OnInit {
   constructor(private router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
-    if (!this.cookieService.get('token')) {
-      this.router.navigateByUrl('signup');
-    }
+    // if (!this.cookieService.get('token')) {
+    //   this.router.navigateByUrl('signup');
+    // }
   }
 
   openMyTasks() {

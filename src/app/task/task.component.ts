@@ -20,9 +20,9 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() {
 
-    if (!this.cookieService.get('token')) {
-      this.router.navigateByUrl('signup');
-    }
+    // if (!this.cookieService.get('token')) {
+    //   this.router.navigateByUrl('signup');
+    // }
 
     this.taskList = [];
     this.taskService.getTasks().subscribe(

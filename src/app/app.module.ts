@@ -1,3 +1,6 @@
+import { AuthService } from './auth.service';
+import { MyHttpInterceptor } from './http-interceptor';
+import { AuthGuard } from './auth.guard';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TaskComponent } from './task/task.component';
-import { HttpModule } from '@angular/http';
 import { MatButtonModule, MatCardModule, MatInputModule, MatDatepickerModule, MatGridListModule,
   MatNativeDateModule, MatSnackBarModule, MatIconModule, MatTabsModule, MatDialogModule } from '@angular/material';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -22,6 +24,8 @@ import { TaskService } from './services/task.service';
 import { UserService } from './services/user.service';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -40,7 +44,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     MatButtonModule,
     MatCardModule,
     RouterModule.forRoot(routes),
@@ -57,7 +61,13 @@ import { LoginComponent } from './login/login.component';
   entryComponents: [
     EditTaskComponent
   ],
-  providers: [TaskService, MatDatepickerModule, UserService, CookieService],
+  providers: [TaskService, MatDatepickerModule, UserService, CookieService, AuthService, AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyHttpInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

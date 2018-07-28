@@ -17,7 +17,6 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.user = new User();
-    const mobilePattern = /^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$/;
     this.signupFormGroup = new FormGroup({
       name: new FormControl(this.user.name, Validators.required),
       email: new FormControl(this.user.email, Validators.required),

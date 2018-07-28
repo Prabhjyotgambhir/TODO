@@ -30,8 +30,17 @@ mongoose.connection.on('error', (error) => {
     console.log('Error Connecting database: ', error);
 });
 
+app.use('/tasks', (req,res,next) => {
+    if (!req.headers.authorization) {
+        return res.status(403).json({
+            message: 'User authentication not set'
+        });
+    }
+    next();
+});
 
 app.use('/tasks', taskRoute);
+
 app.use('/user', userRoute);
 
 app.listen(port, () => {
