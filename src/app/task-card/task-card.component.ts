@@ -13,9 +13,11 @@ export class TaskCardComponent implements OnInit {
   @Output() updateTask = new EventEmitter();
   @Output() undoTask = new EventEmitter();
   @Output() editTask = new EventEmitter();
+  priority: string;
   constructor() { }
 
   ngOnInit() {
+    this.convertPriorityToString();
   }
 
   invokeDelete() {
@@ -32,5 +34,15 @@ export class TaskCardComponent implements OnInit {
 
   invokeEdit() {
     this.editTask.emit();
+  }
+
+  convertPriorityToString() {
+    if (this.task.priority === 0) {
+      this.priority = 'Low';
+    } else if (this.task.priority === 1) {
+      this.priority = 'Medium';
+    } else {
+      this.priority = 'High';
+    }
   }
 }

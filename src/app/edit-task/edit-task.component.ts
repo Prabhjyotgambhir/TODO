@@ -32,8 +32,13 @@ export class EditTaskComponent implements OnInit {
     );
   }
 
+
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  priorityChanged(event: any) {
+    this.task.priority = +event.value;
   }
 
 }

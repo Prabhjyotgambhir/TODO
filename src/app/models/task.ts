@@ -7,4 +7,5 @@ export class Task {
     status: string;
     createdAt: Date;
     updatedAt: Date;
+    priority: number;
 }

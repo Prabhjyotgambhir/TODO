@@ -26,6 +26,14 @@
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
         </div>
+
+        <div>
+          <mat-button-toggle-group name="fontStyle" aria-label="Font Style" (change)="priorityChanged($event)">
+            <mat-button-toggle value=0 color="primary">Low</mat-button-toggle>
+            <mat-button-toggle value=1>Medium</mat-button-toggle>
+            <mat-button-toggle value=2>High</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
         <button mat-raised-button color="primary" type="submit" [disabled]="!taskFormGroup.valid">Update</button>
       </div>
     </form>

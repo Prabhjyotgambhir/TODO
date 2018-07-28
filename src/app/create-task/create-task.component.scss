@@ -8,3 +8,11 @@ mat-form-field{
     bottom: 10%;
     right: 10%;
 }
+
+mat-button-toggle-group {
+    width: 100%;
+    margin: 8px auto; 
+    mat-button-toggle {
+        width: 33.33%;
+    }
+}

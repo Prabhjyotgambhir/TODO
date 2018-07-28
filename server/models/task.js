@@ -19,6 +19,10 @@ const schema = mongoose.Schema({
     status: {
         type: String
     },
+    priority: {
+        type: Number,
+        required: true
+    },
     _id: mongoose.Schema.Types.ObjectId
 }, {timestamps: true} // Used to set the time at real time basis 
 );
