@@ -26,6 +26,10 @@ export class CreateTaskComponent implements OnInit {
     });
   }
 
+  priorityChanged(event: any) {
+    this.task.priority = +event.value;
+  }
+
   createTask() {
     this.taskService.createTask(this.task).subscribe(
       (response) => {

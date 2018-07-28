@@ -10,13 +10,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TaskComponent } from './task/task.component';
 import { MatButtonModule, MatCardModule, MatInputModule, MatDatepickerModule, MatGridListModule,
-  MatNativeDateModule, MatSnackBarModule, MatIconModule, MatTabsModule, MatDialogModule } from '@angular/material';
+  MatNativeDateModule, MatSnackBarModule, MatIconModule, MatTabsModule, MatDialogModule, MatButtonToggleModule } from '@angular/material';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CreateTaskComponent } from './create-task/create-task.component'; // to use material bttons
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
 import { SignupComponent } from './signup/signup.component';
+
 
 // Services
 import { CookieService } from 'ngx-cookie-service';
@@ -56,7 +57,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     MatGridListModule,
     MatIconModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonToggleModule
   ],
   entryComponents: [
     EditTaskComponent
